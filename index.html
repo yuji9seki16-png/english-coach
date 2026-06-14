@@ -381,6 +381,7 @@ function hideTyping() { document.getElementById('typing')?.remove(); }
 
 // ── API ────────────────────────────────────────────────────────────────────
 async function sendMessage() {
+    clearTimeout(autoSendTimer); // タイマーによる二重送信を防ぐ
     const input = document.getElementById('userInput');
     const text  = input.value.trim();
     if (!text || !apiKey) { if (!apiKey) openSettings(); return; }
